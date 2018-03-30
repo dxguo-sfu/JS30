@@ -99,6 +99,21 @@
   </div>
 
 <script>
+  let checkboxes = document.querySelectorAll("input");
+  let prevChecked = checkboxes.length;
+  checkboxes.forEach((checkbox,i) => {
+    checkbox.addEventListener('click', e => {
+      if (e.shiftKey && checkbox.checked) {
+      let toggle = false;
+        checkboxes.forEach((boxIter,iter) => {
+          if(toggle) { boxIter.checked = true; }
+          if(prevChecked != checkboxes.length && prevChecked != i && (iter == i || iter == prevChecked)) { toggle = !toggle; }
+          return;
+        });
+      }
+      if(checkbox.checked) {prevChecked = i;}
+    });
+  });
 </script>
 </body>
 </html>
