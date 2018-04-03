@@ -7,6 +7,20 @@
 </head>
 <body>
 <script>
+  const pressed = [];
+  const secretCode = "david guo";
+
+  window.addEventListener('keyup', (e) => {
+    pressed.push(e.key);
+    // splice(startIndex, #toRemove). If start < 0, startIndex counts from the end. If #toRemove < 0, remove nothing
+    pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+
+    if(pressed.join('').includes(secretCode)){
+      console.log('Ding Ding!');
+      cornify_add();
+    }
+  });
+
 </script>
 </body>
 </html>
